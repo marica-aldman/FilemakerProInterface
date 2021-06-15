@@ -8,9 +8,8 @@
 <?php
 
 // page title
-print(
-    '       <title></title>'
-);
+$titleTotal = "       <title>" . $title . "</title>";
+echo $titleTotal;
 
 ?>
 
@@ -19,9 +18,7 @@ print(
 <?php
 
 // additional situational js
-print(
-    '       <script type="text/javascript" src="source/JS/SOMETHING.js"></script>'
-);
+// echo '       <script type="text/javascript" src="source/JS/SOMETHING.js"></script>';
 
 ?>
 
@@ -30,9 +27,7 @@ print(
 <?php
 
 //additional situational css
-print(
-    '       <link rel="stylesheet" href="source/CSS/SOMETHING.css">'
-);
+// echo '       <script type="stylesheet" src="source/JS/SOMETHING.css"></script>';
 
 ?>
     </head>

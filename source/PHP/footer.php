@@ -1,10 +1,7 @@
+        <footer>
 <?php
 
-print(
-    '       <footer>
-            </footer>
-        </body>
-    </html>'
-);
-
 ?>
+        </footer>
+    </body>
+</html>

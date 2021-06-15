@@ -1,0 +1,36 @@
+.searchSimpleHide {
+    display: none;
+}
+
+.searchSimpleDisplay {
+    display: block;
+}
+
+.searchAdvancedHide {
+    display: none;
+}
+
+.searchAdvancedDisplay {
+    display: block;
+}
+
+.searchSectionCard {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.searchSectionList {
+    display: block;
+    width: 100%;
+}
+
+.searchCard {
+    width: 20%;
+    height: 100px;
+}
+
+.searchList {
+    width: 100%;
+    height: 50px;
+}

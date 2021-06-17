@@ -4,13 +4,24 @@ session_start();
 $page = basename($_SERVER['PHP_SELF']);
 //setting basic variables 
 
+$terminologyDatabase = "Terminologi";
+$peopleDatabase = "Personer";
 $language = "swe";
 $logoDescriptionText = "Sidlogo beskrivning";
 $navTextHome = "Hem";
 $navTextSearch = "Sök";
 $navTextAbout = "Om";
+$searchTypeSimple = "Enkel";
+$searchTypeAdvanced = "Avancerad";
 $title = $navTextHome;
 $test = "";
+
+
+// add search sub types language varables here
+
+$searchChoiceDatabases = "Databaser";
+$searchChoiceSearchWord = "Sökord";
+$searchChoiceSearchButton = "Sök";
 
 // now change variables depending on settings in session (exact text should be in a database later)
 if (isset($_POST["languageButton"])) {
@@ -29,10 +40,17 @@ if (isset($_POST["languageButton"])) {
 
 switch ($language) {
     case "swe":
+        $terminologyDatabase = "Terminologi";
+        $peopleDatabase = "Personer";
         $logoDescriptionText = "Sidlogo beskrivning";
         $navTextHome = "Hem";
         $navTextSearch = "Sök";
         $navTextAbout = "Om";
+        $searchTypeSimple = "Enkel";
+        $searchChoiceDatabases = "Databaser";
+        $searchChoiceSearchWord = "Sökord";
+        $searchChoiceSearchButton = "Sök";
+        $searchTypeAdvanced = "Avancerad";
         if ($page == "index.php") {
             $title = "Hem";
         } else if ($page == "search.php") {
@@ -42,10 +60,17 @@ switch ($language) {
         }
         break;
     case "eng":
+        $terminologyDatabase = "Terminology";
+        $peopleDatabase = "People";
         $logoDescriptionText = "Page logo description";
         $navTextHome = "Home";
         $navTextSearch = "Search";
         $navTextAbout = "About";
+        $searchTypeSimple = "Simple";
+        $searchTypeAdvanced = "Advanced";
+        $searchChoiceDatabases = "Databases";
+        $searchChoiceSearchWord = "Search words";
+        $searchChoiceSearchButton = "Search";
         if ($page == "index.php") {
             $title = "Home";
         } else if ($page == "search.php") {

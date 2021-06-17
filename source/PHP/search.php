@@ -12,10 +12,10 @@ if (isset($_POST["searchSent"])) {
     <section>
         <nav class="searchTypeSelection">
             <li class="<?php if ($formType == "simple") { echo "searchTypeSimpleSelected"; } else { echo "searchTypeSimpleUnselected"; } ?>">
-                <input type="button" name="simple" id="simpleSwitch" value="simple" onclick="formSwitchSimple()">
+                <button name="simple" id="simpleSwitch" value="simple" onclick="formSwitchSimple()"><?php echo $searchTypeSimple; ?></button>
             </li>
             <li class="<?php if ($formType == "advanced") { echo "searchTypeAdvancedSelected"; } else { echo "searchTypeAdvancedUnselected"; } ?>">
-                <input type="button" name="advanced" id="advancedSwitch" value="advanced" onclick="formSwitchAdvanced()">
+                <button type="button" name="advanced" id="advancedSwitch" value="advanced" onclick="formSwitchAdvanced()"><?php echo $searchTypeAdvanced; ?></button>
             </li>
         </nav>
 <?php
@@ -26,21 +26,21 @@ if (isset($_POST["searchSent"])) {
             <table>
                 <tbody>
                     <tr>
-                        <td> <label for="databases">Databas</label>
+                        <td> <label for="databases"><?php echo $searchChoiceDatabases; ?></label>
                         </td>
                         <td> 
                             <select name="databases" id="databases">
                                 <option>
-                                    Terminologi
+                                    <?php echo $terminologyDatabase; ?>
                                 </option>
                                 <option>
-                                    Personer
+                                    <?php echo $peopleDatabase; ?>
                                 </option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td> <label for="searchTerm">Sökord</label>
+                        <td> <label for="searchTerm"><?php echo $searchChoiceSearchWord; ?></label>
                         </td>
                         <td> 
                             <input type="text" name="searchterm" id="searchterm">
@@ -51,7 +51,7 @@ if (isset($_POST["searchSent"])) {
                         </td>
                         <td> 
                             <button type="submit" id="submit">
-                                Sök
+                                <?php echo $searchChoiceSearchButton; ?>
                             </button>
                         </td>
                     </tr>
@@ -68,15 +68,15 @@ if (isset($_POST["searchSent"])) {
             <table>
                 <tbody>
                     <tr>
-                        <td> Databaser
+                        <td> <?php echo $searchChoiceDatabases; ?>
                         </td>
                         <td> 
-                            <input type="checkbox" name="Terminologi" id="database1" value="Terminologi">
-                            <input type="checkbox" name="Personer" id="database2" value="Personer">
+                            <?php echo $terminologyDatabase; ?><input type="checkbox" name="Terminologi" id="database1" value="Terminologi">
+                            <?php echo $peopleDatabase; ?><input type="checkbox" name="Personer" id="database2" value="Personer">
                         </td>
                     </tr>
                     <tr>
-                        <td> <label for="searchTerm">Sökord</label>
+                        <td> <label for="searchTerm"><?php echo $searchChoiceSearchWord; ?></label>
                         </td>
                         <td> 
                             <input type="text" name="searchterm" id="searchterm">
@@ -87,7 +87,7 @@ if (isset($_POST["searchSent"])) {
                         </td>
                         <td> 
                             <button type="submit" id="submit">
-                                Sök
+                                <?php echo $searchChoiceSearchButton; ?>
                             </button>
                         </td>
                     </tr>

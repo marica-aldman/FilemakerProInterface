@@ -106,7 +106,7 @@ header > div > a {
     background-color: #a1a1a1;
 }
 
-.searchTypeSelection li input {
+.searchTypeSelection li button {
     background: none;
     border: none;
 }

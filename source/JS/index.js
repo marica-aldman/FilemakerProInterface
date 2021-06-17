@@ -8,30 +8,35 @@ function formSwitchAdvanced() {
     location.reload();
 }
 
-function changeToList() {
+function switchCardList() {
     z = document.getElementById("searchSection");
-    z.classList.add('searchSectionList');
-    z.classList.remove('searchSectionCard');
-    x = document.getElementByClassName("searchCard");
-    x.forEach(setToList());
+    x = z.classList[0]; 
+    if (x == "searchSectionList") {
+        z.classList.remove('searchSectionList');
+        z.classList.add('searchSectionCard');
+        document.cookie = "searchDisplay=card;";
+    } else {
+        z.classList.add('searchSectionList');
+        z.classList.remove('searchSectionCard');
+        document.cookie = "searchDisplay=list;";
+    }
 }
 
-function changeToCard() {
-    z = document.getElementById("searchSection");
-    z.classList.remove('searchSectionList');
-    z.classList.add('searchSectionCard');
-    x = document.getElementByClassName("searchList");
-    x.forEach(setToCard());
+function openHamburger() {
+    var x = document.getElementById("hamburger");
+    x.style.display = "none";
+    var y = document.getElementById("closeHamburger");
+    y.style.display = "flex";
+    var z = document.getElementById("mainNavigation");
+    z.style.display = "block";
 }
 
-function setToList(y) {
-    y.className -= "searchCard";
-    y.className += "searchList";
-    document.cookie = "searchDisplay=list;";
-}
 
-function setToCard(y) {
-    y.className += "searchCard";
-    y.className -= "searchList";
-    document.cookie = "searchDisplay=card;";
+function closeHamburger() {
+    var x = document.getElementById("hamburger");
+    x.style.display = "block";
+    var y = document.getElementById("closeHamburger");
+    y.style.display = "none";
+    var z = document.getElementById("mainNavigation");
+    z.style.display = "none";
 }

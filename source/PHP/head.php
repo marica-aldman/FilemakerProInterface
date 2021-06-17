@@ -14,6 +14,7 @@ echo $titleTotal;
 ?>
 
         <script type="text/javascript" src="source/JS/index.js"></script>
+        <script src="https://kit.fontawesome.com/090d060e5f.js" crossorigin="anonymous"></script>
 
 <?php
 

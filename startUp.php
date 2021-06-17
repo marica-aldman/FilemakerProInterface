@@ -5,13 +5,14 @@ $page = basename($_SERVER['PHP_SELF']);
 //setting basic variables 
 
 $language = "swe";
+$logoDescriptionText = "Sidlogo beskrivning";
 $navTextHome = "Hem";
 $navTextSearch = "Sök";
 $navTextAbout = "Om";
 $title = $navTextHome;
 $test = "";
 
-// now change variables depending on settings in session
+// now change variables depending on settings in session (exact text should be in a database later)
 if (isset($_POST["languageButton"])) {
     if ($_POST["languageButton"] == "swe") {
         $language = "swe";
@@ -28,6 +29,7 @@ if (isset($_POST["languageButton"])) {
 
 switch ($language) {
     case "swe":
+        $logoDescriptionText = "Sidlogo beskrivning";
         $navTextHome = "Hem";
         $navTextSearch = "Sök";
         $navTextAbout = "Om";
@@ -40,6 +42,7 @@ switch ($language) {
         }
         break;
     case "eng":
+        $logoDescriptionText = "Page logo description";
         $navTextHome = "Home";
         $navTextSearch = "Search";
         $navTextAbout = "About";
@@ -52,9 +55,6 @@ switch ($language) {
         }
         break;
     default:
-        $navTextHome = "Hem";
-        $navTextSearch = "Sök";
-        $navTextAbout = "Om";
         if ($page == "index.php") {
             $title = "Hem";
         } else if ($page == "search.php") {
@@ -79,6 +79,7 @@ if (isset($_COOKIE["formType"])) {
 $searchDisplay = "list";
 
 if (isset($_COOKIE["searchDisplay"])) {
+    $test = "yupp";
     if ($_COOKIE["searchDisplay"] == "list"){
         $searchDisplay = "list";
     } else {

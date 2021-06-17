@@ -6,14 +6,15 @@ if (isset($_POST["searchSent"])) {
 }
 
 // list search form for simple or advanced selected by tabs
+
 ?>
 
     <section>
         <nav class="searchTypeSelection">
-            <li>
+            <li class="<?php if ($formType == "simple") { echo "searchTypeSimpleSelected"; } else { echo "searchTypeSimpleUnselected"; } ?>">
                 <input type="button" name="simple" id="simpleSwitch" value="simple" onclick="formSwitchSimple()">
             </li>
-            <li>
+            <li class="<?php if ($formType == "advanced") { echo "searchTypeAdvancedSelected"; } else { echo "searchTypeAdvancedUnselected"; } ?>">
                 <input type="button" name="advanced" id="advancedSwitch" value="advanced" onclick="formSwitchAdvanced()">
             </li>
         </nav>
@@ -103,10 +104,10 @@ if (isset($_POST["searchSent"])) {
     <section>
         <nav class="searchSortType">
             <li>
-                <input type="button" name="list" id="sortList" value="list" onclick="changeToList()">
+                <button name="list" id="sortList" onclick="switchCardList()"><i class="fas fa-list"></i></button>
             </li>
             <li>
-                <input type="button" name="cards" id="sortCards" value="cards" onclick="changeToCard()">
+                <button name="cards" id="sortCards" onclick="switchCardList()"><i class="fas fa-th"></i></button>
             </li>
         </nav>
     </section>
@@ -121,9 +122,9 @@ if (isset($_POST["searchSent"])) {
         <!--- card/listing template --->
 
         <div class="<?php if ($searchDisplay == "list") { echo "searchList"; } else { echo "searchCard"; } ?>">
-            <h1>
+            <div>
                 Title
-            </h1>
+            </div>
             <div>
                 Main data set
             </div>
@@ -132,9 +133,9 @@ if (isset($_POST["searchSent"])) {
             </div>
         </div>
         <div class="<?php if ($searchDisplay == "list") { echo "searchList"; } else { echo "searchCard"; } ?>">
-            <h1>
+            <div>
                 Title
-            </h1>
+            </div>
             <div>
                 Main data set
             </div>
@@ -143,9 +144,9 @@ if (isset($_POST["searchSent"])) {
             </div>
         </div>
         <div class="<?php if ($searchDisplay == "list") { echo "searchList"; } else { echo "searchCard"; } ?>">
-            <h1>
+            <div>
                 Title
-            </h1>
+            </div>
             <div>
                 Main data set
             </div>
@@ -154,9 +155,9 @@ if (isset($_POST["searchSent"])) {
             </div>
         </div>
         <div class="<?php if ($searchDisplay == "list") { echo "searchList"; } else { echo "searchCard"; } ?>">
-            <h1>
+            <div>
                 Title
-            </h1>
+            </div>
             <div>
                 Main data set
             </div>

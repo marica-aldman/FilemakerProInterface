@@ -22,6 +22,7 @@ $test = "";
 $searchChoiceDatabases = "Databaser";
 $searchChoiceSearchWord = "Sökord";
 $searchChoiceSearchButton = "Sök";
+$searchSeeButton = "Se resultat";
 
 // now change variables depending on settings in session (exact text should be in a database later)
 if (isset($_POST["languageButton"])) {
@@ -58,6 +59,7 @@ switch ($language) {
         } else {
             $title = "Om";
         }
+        $searchSeeButton = "Se resultat";
         break;
     case "eng":
         $terminologyDatabase = "Terminology";
@@ -78,6 +80,7 @@ switch ($language) {
         } else {
             $title = "About";
         }
+        $searchSeeButton = "See result";
         break;
     default:
         if ($page == "index.php") {
@@ -90,7 +93,7 @@ switch ($language) {
         break;
 }
 
-// if we have changed language we dont want to change the form type
+// if we have changed language we dont want to change the form type when we are on the search page
 
 $formType = "simple";
 

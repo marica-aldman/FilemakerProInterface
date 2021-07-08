@@ -2,12 +2,12 @@
         <!-- flag icons from https://www.freeflagicons.com/ -->
         <nav>
             <li>
-                <form action="<?php echo $page; ?>" method="post" id="languageNavigation" class="languageNavigation">
+                <form action="<?php echo $page; ?>" method="post" id="languageNavigationSwe" class="languageNavigation">
                     <button type="submit" name="languageButton" value="swe" id="swe"><img src="source/img/sweden_glossy_square_icon_64.png" alt="Svensk flagga för sidans språkval"></button>
                 </form>
             </li>
             <li>
-                <form action="<?php echo $page; ?>" method="post" id="languageNavigation" class="languageNavigation">
+                <form action="<?php echo $page; ?>" method="post" id="languageNavigationEng" class="languageNavigation">
                     <button type="submit" name="languageButton" value="eng" id="eng"><img src="source/img/united_kingdom_glossy_square_icon_64.png" alt="English flag for site language selection"></button>
                 </form>
             </li>
@@ -25,11 +25,7 @@
             <nav class="mainNavigationLarge" id="mainNavigationLarge">
                 <li>
                     <a href="index.php">
-<?php
-
-echo $navTextHome;
-
-?>
+                        <?php echo $navTextHome; ?>
                     </a>
                 </li>
                 <li>

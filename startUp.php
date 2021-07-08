@@ -22,6 +22,7 @@ $test = "";
 $searchChoiceDatabases = "Databaser";
 $searchChoiceSearchWord = "Sökord";
 $searchChoiceSearchButton = "Sök";
+$searchChoiceResetButton = "Återställ sökning";
 $searchSeeButton = "Se resultat";
 
 // now change variables depending on settings in session (exact text should be in a database later)
@@ -51,6 +52,7 @@ switch ($language) {
         $searchChoiceDatabases = "Databaser";
         $searchChoiceSearchWord = "Sökord";
         $searchChoiceSearchButton = "Sök";
+        $searchChoiceResetButton = "Återställ sökning";
         $searchTypeAdvanced = "Avancerad";
         if ($page == "index.php") {
             $title = "Hem";
@@ -73,6 +75,7 @@ switch ($language) {
         $searchChoiceDatabases = "Databases";
         $searchChoiceSearchWord = "Search words";
         $searchChoiceSearchButton = "Search";
+        $searchChoiceResetButton = "Reset form";
         if ($page == "index.php") {
             $title = "Home";
         } else if ($page == "search.php") {

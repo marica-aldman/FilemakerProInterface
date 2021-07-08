@@ -131,6 +131,9 @@ header > div > a {
     flex-wrap: wrap;
 }
 
+
+
+
 .searchSectionList {
     display: block;
     width: 100%;
@@ -139,33 +142,45 @@ header > div > a {
 .searchSectionCard > div {
     width: calc(30% - 20px);
     max-width: 6em;
-    height: 6em;
+    min-height: 8em;
     border-radius: 10%;
     background-image: linear-gradient(#e4e4e4, #d6d6d6, #e4e4e4);
     padding: 10px;
     margin-bottom: 20px;
 }
 
-.searchSectionList > .searchList > div {
-    height: 1em;
+.searchSectionCard > .searchCard > .result {
+    min-height: 2em;
+    display: flex;
+    align-items: center;
+}
+
+.searchSectionList > .searchList {
+    padding: 10px;
+    min-height: 7em;
 }
 
 .searchSectionList > div {
     width: calc(100% - 20px);
-    height: 3em;
+    min-height: 7em;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-top: 20px;
     border-top: 1px solid #d8d8d8;
     border-bottom: 1px solid #d8d8d8;
     background-image: linear-gradient(#e4e4e4, #d6d6d6, #e4e4e4);
     padding-left: 10px;
     padding-right: 10px;
+    min-height: 6em;
+}
+
+.searchSectionList > .searchList > .result  {
+    display: flex;
+    align-items: center;
 }
 
 .searchSectionList > .searchList > div {
-    height: 1em;
+    min-height: 7em;
 }
 
 @media (min-width: 376px) {

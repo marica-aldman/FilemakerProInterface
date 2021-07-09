@@ -13,7 +13,9 @@ $navTextSearch = "Sök";
 $navTextAbout = "Om";
 $searchTypeSimple = "Enkel";
 $searchTypeAdvanced = "Avancerad";
+$closeButton = "Stäng fönster";
 $title = $navTextHome;
+$textDatabase = "Databas";
 $test = "";
 
 
@@ -54,6 +56,8 @@ switch ($language) {
         $searchChoiceSearchButton = "Sök";
         $searchChoiceResetButton = "Återställ sökning";
         $searchTypeAdvanced = "Avancerad";
+        $closeButton = "Stäng fönster";
+        $textDatabase = "Databas";
         if ($page == "index.php") {
             $title = "Hem";
         } else if ($page == "search.php") {
@@ -76,6 +80,8 @@ switch ($language) {
         $searchChoiceSearchWord = "Search words";
         $searchChoiceSearchButton = "Search";
         $searchChoiceResetButton = "Reset form";
+        $closeButton = "Close window";
+        $textDatabase = "Database";
         if ($page == "index.php") {
             $title = "Home";
         } else if ($page == "search.php") {

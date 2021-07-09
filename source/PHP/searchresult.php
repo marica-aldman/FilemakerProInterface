@@ -23,6 +23,16 @@ if(isset($_POST["searchID"])) {
     //make sure this is safe
     $searchID = $_POST["searchID"];
 }
+if(isset($_POST["sourceOpen"])&&($_POST["sourceOpen"]&&$_POST["sourceOpen"] == "True")) {
+    $sourceOpen = "True";
+} else {
+    $sourceOpen = "False";
+}
+if(isset($_POST["sourceLink"])&&($_POST["sourceOpen"]&&$_POST["sourceLink"] != "")) {
+    $sourceLink = $_POST["sourceLink"];
+} else {
+    $sourceLink = " ";
+}
 
 ?>
 
@@ -31,10 +41,8 @@ if(isset($_POST["searchID"])) {
 var a = "<?php echo $searchSent; ?>";
 var b = "<?php echo $source; ?>";
 var c = "<?php echo $search; ?>";
-console.log("console");
-console.log(a);
-console.log(b);
-console.log(c);
+var d = "<?php echo $sourceOpen; ?>"
+var e = "<?php echo $sourceLink; ?>"
 
 // create hidden variables for the possible searches and append to the language forms so no information is lost when switching between languages
 //swedish
@@ -52,10 +60,22 @@ let searchInputSwe = document.createElement("INPUT");
 searchInputSwe.setAttribute("type", "hidden");
 searchInputSwe.setAttribute("name", "search");
 searchInputSwe.setAttribute("value", c );
+let sourceOpenSwe = document.createElement("INPUT");
+sourceOpenSwe.setAttribute("type", "hidden");
+sourceOpenSwe.setAttribute("name", "sourceOpen");
+sourceOpenSwe.setAttribute("id", "sourceOpenSwe");
+sourceOpenSwe.setAttribute("value", d );
+let sourceLinkSwe = document.createElement("INPUT");
+sourceLinkSwe.setAttribute("type", "hidden");
+sourceLinkSwe.setAttribute("name", "sourceLink");
+sourceLinkSwe.setAttribute("id", "sourceLinkSwe");
+sourceLinkSwe.setAttribute("value", e );
 
 x.appendChild(searchFormInputSwe);
 x.appendChild(databaseInputSwe);
 x.appendChild(searchInputSwe);
+x.appendChild(sourceOpenSwe);
+x.appendChild(sourceLinkSwe);
 
 //english
 
@@ -72,9 +92,21 @@ let searchInputEng = document.createElement("INPUT");
 searchInputEng.setAttribute("type", "hidden");
 searchInputEng.setAttribute("name", "search");
 searchInputEng.setAttribute("value", c );
+let sourceOpenEng = document.createElement("INPUT");
+sourceOpenEng.setAttribute("type", "hidden");
+sourceOpenEng.setAttribute("name", "sourceOpen");
+sourceOpenEng.setAttribute("id", "sourceOpenEng");
+sourceOpenEng.setAttribute("value", d );
+let sourceLinkEng = document.createElement("INPUT");
+sourceLinkEng.setAttribute("type", "hidden");
+sourceLinkEng.setAttribute("name", "sourceLink");
+sourceLinkEng.setAttribute("id", "sourceLinkEng");
+sourceLinkEng.setAttribute("value", e );
 y.appendChild(searchFormInputEng);
 y.appendChild(databaseInputEng);
 y.appendChild(searchInputEng);
+y.appendChild(sourceOpenEng);
+y.appendChild(sourceLinkEng);
 
 </script>
 
@@ -83,12 +115,16 @@ y.appendChild(searchInputEng);
 
 // back button
 
+    // place these values in the language form
+
 ?>
 
 <form action="search.php" method="post">
 <input type="hidden" name="searchSent" id="searchSent" value="True">
 <input type="hidden" name="searchterm" value=<?php echo $search; ?>>
 <input type="hidden" name="databases" value=<?php echo $source; ?>>
+<input type="hidden" name="sourceOpen" value=<?php echo "False"; ?>>
+<input type="hidden" name="sourceLink" value=<?php echo " "; ?>>
 
 <button type="submit" name="return">Back</button>
 </form>
@@ -132,10 +168,10 @@ if ($source == "Terminologi") {
     // look up the searchID in the database then display result $searchResult
     // placing some temp values for now
     // add different translations of the definition and display the right one
-    $searchResult1 = array("id"=>"1","Edefinition"=>"The person who gave birth to a child.","Sdefinition"=>"Person som fött barn.", "swe"=>"Mor", "eng"=>"Mother", "source"=>"source.png");
-    $searchResult2 = array("id"=>"2","Edefinition"=>"The person who gave impregnated the mother of a child with his own sperm.","Sdefinition"=>"Personen som gjort en annan gravid med sin egen sperma.", "swe"=>"Far", "eng"=>"Father", "source"=>"source.png");
-    $searchResult3 = array("id"=>"3","Edefinition"=>"A female child of the same parents.","Sdefinition"=>"Ett kvinnligt barn till samma föräldrar.", "swe"=>"Syster", "eng"=>"Sister", "source"=>"source.png");
-    $searchResult4 = array("id"=>"4","Edefinition"=>"A male child of the same parents.","Sdefinition"=>"Ett manligt barn till samma föräldrar.", "swe"=>"Bror", "eng"=>"Brother", "source"=>"source.png");
+    $searchResult1 = array("id"=>"1","Edefinition"=>"The person who gave birth to a child.","Sdefinition"=>"Person som fött barn.", "swe"=>"Mor", "eng"=>"Mother", "source"=>"LNC305.png");
+    $searchResult2 = array("id"=>"2","Edefinition"=>"The person who gave impregnated the mother of a child with his own sperm.","Sdefinition"=>"Personen som gjort en annan gravid med sin egen sperma.", "swe"=>"Far", "eng"=>"Father", "source"=>"LNC305.png");
+    $searchResult3 = array("id"=>"3","Edefinition"=>"A female child of the same parents.","Sdefinition"=>"Ett kvinnligt barn till samma föräldrar.", "swe"=>"Syster", "eng"=>"Sister", "source"=>"LNC305.png");
+    $searchResult4 = array("id"=>"4","Edefinition"=>"A male child of the same parents.","Sdefinition"=>"Ett manligt barn till samma föräldrar.", "swe"=>"Bror", "eng"=>"Brother", "source"=>"LNC305.png");
 
     $searchResult = array($searchResult1,$searchResult2,$searchResult3,$searchResult4);
     $count = count($searchResult);
@@ -172,7 +208,7 @@ if ($source == "Terminologi") {
             <tr>
                 <td><?php echo $textSource ?>:
                 </td>
-                <td><button id="sourceButton"><img src="<?php echo $result["source"]; ?>"></button>
+                <td><button id="sourceButton" onClick="openSource('<?php echo $result["source"]; ?>')"><img src="source/img/<?php echo $result["source"]; ?>"></button>
                 </td>
             </tr>
         </table>
@@ -211,10 +247,10 @@ if ($source == "Terminologi") {
         // look up the searchID in the database then display result $searchResult
         // placing some temp values for now
         // add different translations of the definition and display the right one
-        $searchResult1 = array("id"=>"1","name"=>"Per Person", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"source.png");
-        $searchResult2 = array("id"=>"2","name"=>"Gustav Person", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"source.png");
-        $searchResult3 = array("id"=>"3","name"=>"Hanna Person", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"source.png");
-        $searchResult4 = array("id"=>"4","name"=>"Per Gustavsson", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"source.png");
+        $searchResult1 = array("id"=>"1","name"=>"Per Person", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"LNC305.png");
+        $searchResult2 = array("id"=>"2","name"=>"Gustav Person", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"LNC305.png");
+        $searchResult3 = array("id"=>"3","name"=>"Hanna Person", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"LNC305.png");
+        $searchResult4 = array("id"=>"4","name"=>"Per Gustavsson", "birth"=>"1 jan", "death"=>"30 dec", "source"=>"LNC305.png");
         
         $searchResult = array($searchResult1,$searchResult2,$searchResult3,$searchResult4);
         $count = count($searchResult);
@@ -250,7 +286,7 @@ if ($source == "Terminologi") {
         <tr>
             <td><?php echo $textSource ?>:
             </td>
-            <td><button id="sourceButton"><img src="<?php echo $result["source"]; ?>"></button>
+            <td><button id="sourceButton" onClick="openSource('<?php echo $result["source"]; ?>')"><img src="source/img/<?php echo $result["source"]; ?>"></button>
             </td>
         </tr>
     </table>
@@ -260,4 +296,45 @@ if ($source == "Terminologi") {
 
 ?>
 
+<div class="source <?php if($sourceOpen == "False"){ echo "sourceHide"; } ?>" id="source">
+    <div>
+        <?php echo $textDatabase; ?>: <?php echo $source; ?>
+    </div>
+    <div>
+        <img src="<?php if($sourceOpen == "True"){ echo $sourceLink; } ?>" id="sourceImg">
+    </div>
+    <div>
+        <button type="submit" name="close" id="closeSource" onClick="closeSource()"><?php echo $closeButton; ?></button>
+    </div>
+</div>
+
 </main>
+
+<script>
+
+function openSource(source){
+    var x = document.getElementById("source");
+    x.classList.remove("sourceHide");
+    var y = document.getElementById("sourceImg");
+    var sourceLink = "source/img/" + source;
+    y.src = sourceLink;
+    var i = document.getElementById("sourceOpenSwe");
+    i.setAttribute("value", "True" );
+    var j = document.getElementById("sourceOpenEng");
+    j.setAttribute("value", "True" );
+    var k = document.getElementById("sourceLinkSwe");
+    k.setAttribute("value", sourceLink );
+    var l = document.getElementById("sourceLinkEng");
+    l.setAttribute("value", sourceLink );
+}
+
+function closeSource(source){
+    var x = document.getElementById("source");
+    x.classList.add("sourceHide");
+    var a = document.getElementById("sourceOpenSwe");
+    a.setAttribute("value", "False" );
+    var b = document.getElementById("sourceOpenEng");
+    b.setAttribute("value", "False" );
+}
+
+</script>

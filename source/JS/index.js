@@ -40,3 +40,16 @@ function closeHamburger() {
     var z = document.getElementById("mainNavigation");
     z.style.display = "none";
 }
+
+function openSource(source){
+    var x = document.getElementById("source");
+    x.classList.remove("sourceHide");
+    var y = document.getElementById("sourceImg");
+    var sourceLink = "source/img/" + source;
+    searchInputSwe.setAttribute("src", sourceLink );
+}
+
+function closeSource(source){
+    var x = document.getElementById("source");
+    x.classList.add("sourceHide");
+}

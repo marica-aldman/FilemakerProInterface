@@ -61,6 +61,11 @@ header > div > a {
     color: #000000;
 }
 
+main {
+    position: relative;
+    width: 100%;
+}
+
 .searchTypeSelection {
     display: flex;
 }
@@ -181,6 +186,23 @@ header > div > a {
 
 .searchSectionList > .searchList > div {
     min-height: 7em;
+}
+
+#sourceButton > img {
+    max-width: 20px;
+}
+
+.sourceHide {
+    display: none;
+}
+
+.source {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 20px;
 }
 
 @media (min-width: 376px) {

@@ -33,7 +33,6 @@ if(isset($_POST["sourceLink"])&&($_POST["sourceOpen"]&&$_POST["sourceLink"] != "
 } else {
     $sourceLink = " ";
 }
-
 ?>
 
 
@@ -43,6 +42,7 @@ var b = "<?php echo $source; ?>";
 var c = "<?php echo $search; ?>";
 var d = "<?php echo $sourceOpen; ?>"
 var e = "<?php echo $sourceLink; ?>"
+var f = "<?php echo $searchID; ?>"
 
 // create hidden variables for the possible searches and append to the language forms so no information is lost when switching between languages
 //swedish
@@ -70,12 +70,18 @@ sourceLinkSwe.setAttribute("type", "hidden");
 sourceLinkSwe.setAttribute("name", "sourceLink");
 sourceLinkSwe.setAttribute("id", "sourceLinkSwe");
 sourceLinkSwe.setAttribute("value", e );
+let searchIDSwe = document.createElement("INPUT");
+searchIDSwe.setAttribute("type", "hidden");
+searchIDSwe.setAttribute("name", "searchID");
+searchIDSwe.setAttribute("id", "searchIDSwe");
+searchIDSwe.setAttribute("value", f );
 
 x.appendChild(searchFormInputSwe);
 x.appendChild(databaseInputSwe);
 x.appendChild(searchInputSwe);
 x.appendChild(sourceOpenSwe);
 x.appendChild(sourceLinkSwe);
+x.appendChild(searchIDSwe);
 
 //english
 
@@ -102,16 +108,22 @@ sourceLinkEng.setAttribute("type", "hidden");
 sourceLinkEng.setAttribute("name", "sourceLink");
 sourceLinkEng.setAttribute("id", "sourceLinkEng");
 sourceLinkEng.setAttribute("value", e );
+let searchIDEng = document.createElement("INPUT");
+searchIDEng.setAttribute("type", "hidden");
+searchIDEng.setAttribute("name", "searchID");
+searchIDEng.setAttribute("id", "searchIDEng");
+searchIDEng.setAttribute("value", f );
+
 y.appendChild(searchFormInputEng);
 y.appendChild(databaseInputEng);
 y.appendChild(searchInputEng);
 y.appendChild(sourceOpenEng);
 y.appendChild(sourceLinkEng);
+y.appendChild(searchIDEng);
 
 </script>
 
 <?php
-
 
 // back button
 
@@ -177,8 +189,8 @@ if ($source == "Terminologi") {
     $count = count($searchResult);
     for($x = 0; $x < $count; $x++) {
         $result = $searchResult[$x];
-        if(settype($searchID, "integer") == settype($result["id"], "integer")) {
-            $x == $count;
+        if($searchID == $result["id"]) {
+            $x = $count;
         } else {
             $result = array("id"=>"x","Edefinition"=>".","Sdefinition"=>".", "swe"=>"x", "eng"=>"x", "source"=>"x.png");
         }
@@ -256,8 +268,8 @@ if ($source == "Terminologi") {
         $count = count($searchResult);
         for($x = 0; $x < $count; $x++) {
             $result = $searchResult[$x];
-            if(settype($searchID, "integer") == settype($result["id"], "integer")) {
-                $x == $count;
+            if($searchID == $result["id"]) {
+                $x = $count;
             } else {
                 $result = array("id"=>"x","name"=>"x", "birth"=>"x", "death"=>"x", "source"=>"x.png");
             }

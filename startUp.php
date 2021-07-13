@@ -11,6 +11,7 @@ $logoDescriptionText = "Sidlogo beskrivning";
 $navTextHome = "Hem";
 $navTextSearch = "Sök";
 $navTextAbout = "Om";
+$navTextSearchResult = "Sökresultat";
 $searchTypeSimple = "Enkel";
 $searchTypeAdvanced = "Avancerad";
 $closeButton = "Stäng fönster";
@@ -62,6 +63,8 @@ switch ($language) {
             $title = "Hem";
         } else if ($page == "search.php") {
             $title = "Sök";
+        } else if ($page == "searchresult.php") {
+            $title = "Sökresultat";
         } else {
             $title = "Om";
         }
@@ -86,6 +89,8 @@ switch ($language) {
             $title = "Home";
         } else if ($page == "search.php") {
             $title = "Search";
+        } else if ($page == "searchresult.php") {
+            $title = "Search Result";
         } else {
             $title = "About";
         }
@@ -96,6 +101,8 @@ switch ($language) {
             $title = "Hem";
         } else if ($page == "search.php") {
             $title = "Sök";
+        } else if ($page == "searchresult.php") {
+            $title = "Search Result";
         } else {
             $title = "Om";
         }
